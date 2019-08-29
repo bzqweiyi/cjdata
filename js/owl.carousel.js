@@ -297,7 +297,7 @@ if ( typeof Object.create !== "function" ) {
 		appendItemsSizes : function(){
 			var base = this;
 
-			var roundPages = 0;
+			var roundstudents = 0;
 			var lastItem = base.itemsAmount - base.options.items;
 
 			base.$owlItems.each(function(index){
@@ -308,10 +308,10 @@ if ( typeof Object.create !== "function" ) {
 
 				if(index % base.options.items === 0 || index === lastItem){
 					if(!(index > lastItem)){
-						roundPages +=1;
+						roundstudents +=1;
 					}
 				}
-				$this.data("owl-roundPages",roundPages)
+				$this.data("owl-roundstudents",roundstudents)
 			});
 		},
 
@@ -363,7 +363,7 @@ if ( typeof Object.create !== "function" ) {
 			var base = this;
 
 			base.positionsInArray = [0];
-			base.pagesInArray = [];
+			base.studentsInArray = [];
 			var prev = 0;
 			var elWidth = 0;
 
@@ -373,9 +373,9 @@ if ( typeof Object.create !== "function" ) {
 
 				if(base.options.scrollPerPage === true){
 					var item = $(base.$owlItems[i]);
-					var roundPageNum = item.data("owl-roundPages");
+					var roundPageNum = item.data("owl-roundstudents");
 					if(roundPageNum !== prev){
-						base.pagesInArray[prev] = base.positionsInArray[i];
+						base.studentsInArray[prev] = base.positionsInArray[i];
 						prev = roundPageNum;
 					}
 				}
@@ -469,7 +469,7 @@ if ( typeof Object.create !== "function" ) {
 					paginationButton.append(paginationButtonInner);
 
 					paginationButton.data("owl-page",lastPage === i ? lastItem : i);
-					paginationButton.data("owl-roundPages",counter);
+					paginationButton.data("owl-roundstudents",counter);
 
 					base.paginationWrapper.append(paginationButton);
 				}
@@ -482,7 +482,7 @@ if ( typeof Object.create !== "function" ) {
 				return false;
 			}
 			base.paginationWrapper.find(".owl-page").each(function(i,v){
-				if($(this).data("owl-roundPages") === $(base.$owlItems[base.currentItem]).data("owl-roundPages") ){
+				if($(this).data("owl-roundstudents") === $(base.$owlItems[base.currentItem]).data("owl-roundstudents") ){
 					base.paginationWrapper
 						.find(".owl-page")
 						.removeClass("active");
@@ -1024,7 +1024,7 @@ if ( typeof Object.create !== "function" ) {
 		},
 		closestItem : function(){
 			var base = this,
-				array = base.options.scrollPerPage === true ? base.pagesInArray : base.positionsInArray,
+				array = base.options.scrollPerPage === true ? base.studentsInArray : base.positionsInArray,
 				goal = base.newPosX,
 				closest = null;
 
