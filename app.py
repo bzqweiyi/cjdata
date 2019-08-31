@@ -15,8 +15,7 @@ def hello_world():
         data = request.data.decode("utf-8")
         datas = json.loads(data)
         send(datas)
-
-        return "成功"
+        return "已成功发送，稍后会有专员与您联系。"
 
 def send(datas):
     # 第三方 SMTP 服务
